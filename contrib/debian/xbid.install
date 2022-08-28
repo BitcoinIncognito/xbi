@@ -1,0 +1,3 @@
+usr/local/bin/xbid usr/bin
+usr/local/bin/xbi-cli usr/bin
+debian/examples/xbi.conf etc/xbi

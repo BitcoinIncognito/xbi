@@ -1,0 +1,8 @@
+/usr/bin/xbi-cli		--	gen_context(system_u:object_r:xbi_exec_t,s0)
+/usr/sbin/xbid		--	gen_context(system_u:object_r:xbi_exec_t,s0)
+/usr/lib(64)?/xbi/xbid		--	gen_context(system_u:object_r:xbi_exec_t,s0)
+
+/etc/xbi(/.*)?		gen_context(system_u:object_r:xbi_conf_t,s0)
+/var/lib/xbi(/.*)?		gen_context(system_u:object_r:xbi_var_lib_t,s0)
+
+(/var)?/run/xbid(/.*)?   gen_context(system_u:object_r:xbi_var_run_t,s0)

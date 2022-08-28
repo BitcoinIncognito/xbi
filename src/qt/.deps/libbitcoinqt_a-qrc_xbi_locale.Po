@@ -1,0 +1,1 @@
+qt/libbitcoinqt_a-qrc_xbi_locale.o: qt/qrc_xbi_locale.cpp

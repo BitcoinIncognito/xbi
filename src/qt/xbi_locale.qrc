@@ -1,0 +1,15 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="de">locale/xbi_de.qm</file>
+        <file alias="en">locale/xbi_en.qm</file>
+        <file alias="en_US">locale/xbi_en_US.qm</file>
+        <file alias="es">locale/xbi_es.qm</file>
+        <file alias="fr_FR">locale/xbi_fr_FR.qm</file>
+        <file alias="hr_HR">locale/xbi_hr_HR.qm</file>
+        <file alias="it">locale/xbi_it.qm</file>
+        <file alias="ko_KR">locale/xbi_ko_KR.qm</file>
+        <file alias="nl">locale/xbi_nl.qm</file>
+        <file alias="pl">locale/xbi_pl.qm</file>
+        <file alias="ru">locale/xbi_ru.qm</file>
+    </qresource>
+</RCC>

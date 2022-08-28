@@ -1,0 +1,81 @@
+policy_module(xbi, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type xbi_t;
+type xbi_exec_t;
+init_daemon_domain(xbi_t, xbi_exec_t)
+
+permissive xbi_t;
+
+type xbi_initrc_exec_t;
+init_script_file(xbi_initrc_exec_t)
+
+type xbi_conf_t;
+files_type(xbi_conf_t)
+
+type xbi_var_lib_t;
+files_type(xbi_var_lib_t)
+
+type xbi_var_run_t;
+files_type(xbi_var_run_t)
+
+type xbi_port_t;
+corenet_port(xbi_port_t)
+
+########################################
+#
+# xbi local policy
+#
+allow xbi_t self:process { fork };
+
+allow xbi_t self:fifo_file rw_fifo_file_perms;
+allow xbi_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(xbi_t, xbi_conf_t, xbi_conf_t)
+manage_files_pattern(xbi_t, xbi_conf_t, xbi_conf_t)
+
+manage_dirs_pattern(xbi_t, xbi_var_lib_t, xbi_var_lib_t)
+manage_files_pattern(xbi_t, xbi_var_lib_t, xbi_var_lib_t)
+files_var_lib_filetrans(xbi_t, xbi_var_lib_t, { dir file })
+
+manage_dirs_pattern(xbi_t, xbi_var_run_t, xbi_var_run_t)
+manage_files_pattern(xbi_t, xbi_var_run_t, xbi_var_run_t)
+
+sysnet_dns_name_resolve(xbi_t)
+corenet_all_recvfrom_unlabeled(xbi_t)
+
+allow xbi_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(xbi_t)
+corenet_tcp_sendrecv_generic_node(xbi_t)
+corenet_tcp_sendrecv_all_ports(xbi_t)
+corenet_tcp_bind_generic_node(xbi_t)
+
+gen_require(`
+    type xbi_port_t;
+')
+allow xbi_t xbi_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type xbi_port_t;
+')
+allow xbi_t xbi_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(xbi_t)
+
+files_read_etc_files(xbi_t)
+
+miscfiles_read_localization(xbi_t)
+
+sysnet_dns_name_resolve(xbi_t)
+
+allow xbi_t xbi_exec_t:file execute_no_trans;
+allow xbi_t self:process setsched;
+corecmd_exec_ls(xbi_t)
+corenet_tcp_connect_http_port(xbi_t)
+dev_read_urand(xbi_t)
+fs_getattr_xattr_fs(xbi_t)
+kernel_read_system_state(xbi_t)

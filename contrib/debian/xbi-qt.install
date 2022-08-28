@@ -1,0 +1,6 @@
+usr/local/bin/xbi-qt usr/bin
+share/pixmaps/xbi32.xpm usr/share/pixmaps
+share/pixmaps/xbi16.xpm usr/share/pixmaps
+share/pixmaps/xbi128.png usr/share/pixmaps
+debian/xbi-qt.desktop usr/share/applications
+debian/xbi-qt.protocol usr/share/kde4/services/
